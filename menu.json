@@ -1,0 +1,230 @@
+{
+  "data": {
+    "menus": {
+      "nodes": [
+        {
+          "id": "gid://shopify/Menu/211376668880",
+          "title": "Main menu",
+          "handle": "main-menu",
+          "items": [
+            {
+              "id": "gid://shopify/MenuItem/493613678800",
+              "title": "Product",
+              "url": "/",
+              "type": "FRONTPAGE",
+              "items": [
+                {
+                  "id": "gid://shopify/MenuItem/495809003728",
+                  "title": "LED NEON-PRO UV Integrated",
+                  "url": "/pages/neon-sign-studio",
+                  "type": "PAGE",
+                  "items": [
+                    {
+                      "id": "gid://shopify/MenuItem/495809036496",
+                      "title": "Logo",
+                      "url": "/pages/neon-sign-studio",
+                      "type": "PAGE"
+                    },
+                    {
+                      "id": "gid://shopify/MenuItem/495809069264",
+                      "title": "Text",
+                      "url": "/pages/neon-sign-studio",
+                      "type": "PAGE"
+                    },
+                    {
+                      "id": "gid://shopify/MenuItem/495809102032",
+                      "title": "Open",
+                      "url": "/pages/neon-sign-studio",
+                      "type": "PAGE"
+                    }
+                  ]
+                },
+                {
+                  "id": "gid://shopify/MenuItem/495809134800",
+                  "title": "Channel Letter Signs",
+                  "url": "/pages/neon-sign-studio",
+                  "type": "PAGE",
+                  "items": [
+                    {
+                      "id": "gid://shopify/MenuItem/495809167568",
+                      "title": "Front-Lit",
+                      "url": "/pages/neon-sign-studio",
+                      "type": "PAGE"
+                    },
+                    {
+                      "id": "gid://shopify/MenuItem/495809200336",
+                      "title": "Halo-lit",
+                      "url": "/pages/neon-sign-studio",
+                      "type": "PAGE"
+                    },
+                    {
+                      "id": "gid://shopify/MenuItem/495809233104",
+                      "title": "Dual-Lit (Front + Halo)",
+                      "url": "/pages/neon-sign-studio",
+                      "type": "PAGE"
+                    }
+                  ]
+                },
+                {
+                  "id": "gid://shopify/MenuItem/495809265872",
+                  "title": "Logo Signs",
+                  "url": "/pages/neon-sign-studio",
+                  "type": "PAGE",
+                  "items": [
+                    {
+                      "id": "gid://shopify/MenuItem/495809298640",
+                      "title": "Flat",
+                      "url": "/pages/neon-sign-studio",
+                      "type": "PAGE"
+                    },
+                    {
+                      "id": "gid://shopify/MenuItem/495809331408",
+                      "title": "Backlit",
+                      "url": "/pages/neon-sign-studio",
+                      "type": "PAGE"
+                    },
+                    {
+                      "id": "gid://shopify/MenuItem/495809364176",
+                      "title": "Halo-lit 3D",
+                      "url": "/pages/neon-sign-studio",
+                      "type": "PAGE"
+                    }
+                  ]
+                },
+                {
+                  "id": "gid://shopify/MenuItem/495809396944",
+                  "title": "Lightbox Signs",
+                  "url": "/pages/neon-sign-studio",
+                  "type": "PAGE",
+                  "items": [
+                    {
+                      "id": "gid://shopify/MenuItem/495809429712",
+                      "title": "Single-Sided",
+                      "url": "/pages/neon-sign-studio",
+                      "type": "PAGE"
+                    },
+                    {
+                      "id": "gid://shopify/MenuItem/495809462480",
+                      "title": "Double-Sided",
+                      "url": "/pages/neon-sign-studio",
+                      "type": "PAGE"
+                    }
+                  ]
+                },
+                {
+                  "id": "gid://shopify/MenuItem/495809495248",
+                  "title": "Blade Signs",
+                  "url": "/pages/neon-sign-studio",
+                  "type": "PAGE",
+                  "items": []
+                }
+              ]
+            },
+            {
+              "id": "gid://shopify/MenuItem/493613711568",
+              "title": "Industry",
+              "url": "/pages/contact",
+              "type": "PAGE",
+              "items": [
+                {
+                  "id": "gid://shopify/MenuItem/495809593552",
+                  "title": "Restaurants & Cafes",
+                  "url": "/pages/contact",
+                  "type": "PAGE",
+                  "items": []
+                },
+                {
+                  "id": "gid://shopify/MenuItem/495809626320",
+                  "title": "Retail Stores",
+                  "url": "/pages/contact",
+                  "type": "PAGE",
+                  "items": []
+                },
+                {
+                  "id": "gid://shopify/MenuItem/495809659088",
+                  "title": "Salons & Spas",
+                  "url": "/pages/contact",
+                  "type": "PAGE",
+                  "items": []
+                },
+                {
+                  "id": "gid://shopify/MenuItem/495809691856",
+                  "title": "Clinics & Dental",
+                  "url": "/pages/contact",
+                  "type": "PAGE",
+                  "items": []
+                },
+                {
+                  "id": "gid://shopify/MenuItem/495809724624",
+                  "title": "Gyms & Studios",
+                  "url": "/pages/contact",
+                  "type": "PAGE",
+                  "items": []
+                },
+                {
+                  "id": "gid://shopify/MenuItem/495809757392",
+                  "title": "Offices",
+                  "url": "/pages/contact",
+                  "type": "PAGE",
+                  "items": []
+                },
+                {
+                  "id": "gid://shopify/MenuItem/495809790160",
+                  "title": "Real Estate",
+                  "url": "/pages/contact",
+                  "type": "PAGE",
+                  "items": []
+                }
+              ]
+            },
+            {
+              "id": "gid://shopify/MenuItem/493613744336",
+              "title": "Supports",
+              "url": "/",
+              "type": "FRONTPAGE",
+              "items": [
+                {
+                  "id": "gid://shopify/MenuItem/495809528016",
+                  "title": "Shipping & Returns Policy",
+                  "url": "/policies/privacy-policy",
+                  "type": "SHOP_POLICY",
+                  "items": []
+                }
+              ]
+            },
+            {
+              "id": "gid://shopify/MenuItem/495809560784",
+              "title": "Track Order",
+              "url": "/",
+              "type": "FRONTPAGE",
+              "items": []
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "extensions": {
+    "cost": {
+      "requestedQueryCost": 6,
+      "actualQueryCost": 6,
+      "throttleStatus": {
+        "maximumAvailable": 20000,
+        "currentlyAvailable": 19994,
+        "restoreRate": 1000
+      }
+    },
+    "search": [
+      {
+        "path": [
+          "menus"
+        ],
+        "query": "title:main",
+        "parsed": {
+          "field": "title",
+          "match_all": "main"
+        }
+      }
+    ]
+  }
+}
