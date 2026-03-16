@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1 min to visualize your neon sign! – Jixta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lexend:wght@600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset ── */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background-color: #f0f0f0;
+      color: #1a1a1a;
+      -webkit-font-smoothing: antialiased;
+      margin: 0;
+      padding: 0;
+    }
+    a { text-decoration: none !important; color: inherit; }
+    img { display: block; max-width: 100%; border: 0; }
+    table { border-collapse: collapse !important; }
+
+    /* ── Layout ── */
+    .email-wrapper {
+      width: 100%;
+      background-color: #f0f0f0;
+      padding: 32px 0;
+    }
+
+    .email-container {
+      width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    }
+
+    /* ── Header ── */
+    .header {
+      background-color: #0a0a0a;
+      padding: 44px 40px 20px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .header img { margin: 0 auto; }
+
+    /* ── Hero ── */
+    .hero-section {
+      background-color: #ffffff;
+      padding: 32px 32px 0;
+    }
+    .hero-card {
+      background-color: #090909;
+      background-image: url('https://cdn.shopify.com/s/files/1/0665/1566/5104/files/Frame_461.png?v=1773639372');
+      background-size: cover;
+      background-position: center;
+      border-radius: 24px;
+      padding: 24px;
+      text-align: center;
+    }
+    .hero-image {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 24px;
+    }
+
+    /* ── Body ── */
+    .content-section {
+      background-color: #ffffff;
+      padding: 60px 32px;
+      text-align: center;
+    }
+    .headline {
+      font-size: 40px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 40px;
+      color: #0062ff;
+    }
+    .greeting {
+      font-size: 24px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+    .text-paragraph {
+      font-size: 16px;
+      line-height: 2;
+      color: #031023;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+    .sign-off { text-align: left; margin-top: 24px; }
+    .sign-off p { font-size: 16px; color: #031023; }
+    .sign-off .team-name { font-weight: 600; }
+
+    /* ── Footer ── */
+    .footer {
+      background: #090909;
+      background: linear-gradient(131deg, #090909 0%, #1e1a4d 100%);
+      padding: 40px 32px;
+      text-align: center;
+    }
+    .footer-title { color: #ffffff; font-size: 24px; font-weight: 700; margin-bottom: 10px; }
+    .footer-subtitle { color: #ffffff; font-size: 14px; margin-bottom: 25px; }
+
+    .contact-btn {
+      border: 1px solid #0062ff;
+      border-radius: 100px;
+      padding: 12px 20px;
+      display: inline-block;
+      text-decoration: none !important;
+    }
+
+    .footer-msg { color: #ffffff; font-size: 14px; margin-top: 32px; margin-bottom: 10px; }
+    .footer-brand { color: #ffffff; font-size: 16px; font-weight: 700; margin-bottom: 19px; }
+    .footer-ps { color: #999; font-size: 12px; margin-bottom: 40px; }
+    .footer-ps a { color: #ffffff; text-decoration: underline !important; }
+
+    .social-row { text-align: center; margin-bottom: 24px; }
+    .social-link { display: inline-block; width: 40px; height: 40px; margin: 0 8px; }
+
+    .footer-legal { color: #ffffff; font-size: 12px; line-height: 1.5; margin-top: 40px; margin-bottom: 40px; }
+    .footer-legal a { color: #ffffff; text-decoration: underline !important; }
+    .social-cta { color: #00d3f3; font-size: 32px; font-weight: 800; text-transform: uppercase; margin-top: 20px; }
+
+    /* ── Responsive ── */
+    @media (max-width: 620px) {
+      .email-container { width: 100% !important; border-radius: 0; }
+      .stack-mobile-btn { display: block !important; width: 100% !important; margin-bottom: 15px !important; }
+      .headline { font-size: 32px; }
+      .social-cta { font-size: 28px !important; }
+    }
+  </style>
+</head>
+<body>
+<div class="email-wrapper">
+  <div class="email-container">
+
+    <!-- HEADER -->
+    <div class="header">
+      <img src="https://cdn.shopify.com/s/files/1/0665/1566/5104/files/logo_ca07796d-1cfe-4736-8e92-24ab2a5b0f71.png?v=1773636029" width="260" alt="Jixta" />
+    </div>
+
+    <!-- HERO SECTION -->
+    <div class="hero-section">
+      <div class="hero-card" background="https://cdn.shopify.com/s/files/1/0665/1566/5104/files/Frame_461.png?v=1773639372">
+        <img class="hero-image" src="https://cdn.shopify.com/s/files/1/0665/1566/5104/files/hero.png?v=1773634019" alt="Neon Sign Butterfly" />
+        <a href="#" style="display: inline-block;">
+          <img src="https://cdn.shopify.com/s/files/1/0665/1566/5104/files/button.btn-neon.png?v=1773639214" width="280" alt="Visualize Your Sign" />
+        </a>
+      </div>
+    </div>
+
+    <!-- CONTENT SECTION -->
+    <div class="content-section">
+      <h1 class="headline">1 min to visualize your<br />neon sign! ⚡</h1>
+      <div class="greeting">Hi my friend,</div>
+      <p class="text-paragraph">Your neon design preview is almost ready. It only takes about 60 seconds to unlock the visual mockup and see how your sign could actually glow.</p>
+      <p class="text-paragraph">Once you submit the short form, you’ll instantly see the preview and receive your exact custom price.</p>
+      <p class="text-paragraph">It’s quick, simple, and gives you a clear idea of how your sign will look.</p>
+      <div class="sign-off">
+        <p>Best,</p>
+        <p class="team-name">The Jixta Team</p>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <h2 class="footer-title">Questions?<br />We've Got You Covered</h2>
+      <p class="footer-subtitle">If anything feels off or you need clarification before our call, just reach out:</p>
+      
+      <!-- Table for Contact Buttons -->
+      <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+          <td align="center">
+            <!-- Support Button -->
+            <div class="stack-mobile-btn" style="display: inline-block; margin: 0 10px;">
+              <a href="mailto:support@jixta.com" class="contact-btn">
+                <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td style="padding-right: 8px;"><img src="https://www.figma.com/api/mcp/asset/9b6d6a76-20e7-4bde-a970-70e0a9984819" width="16" height="16" border="0" alt="" /></td>
+                    <td><span style="font-family: 'Inter', sans-serif; font-size: 14px; color: #00d3f3; font-weight: 600;">Support@jixta.com</span></td>
+                  </tr>
+                </table>
+              </a>
+            </div>
+            <!-- Phone Button -->
+            <div class="stack-mobile-btn" style="display: inline-block; margin: 0 10px;">
+              <a href="tel:+17029051124" class="contact-btn">
+                <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td style="padding-right: 8px;"><img src="https://www.figma.com/api/mcp/asset/8a705b97-05d4-40ef-b0c2-c8fd095bea16" width="16" height="16" border="0" alt="" /></td>
+                    <td><span style="font-family: 'Inter', sans-serif; font-size: 14px; color: #00d3f3; font-weight: 600;">Phone: +1 702 905 1124</span></td>
+                  </tr>
+                </table>
+              </a>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <p class="footer-msg">We're obsessed with making this process completely stress-free.</p>
+      <p class="footer-msg">We're just getting started,</p>
+      <p class="footer-brand">JIXTA</p>
+      
+      <p class="footer-ps">
+        P.S. All calls are recorded for quality assurance purposes.<br />
+        Ask during our call or learn more in our <a href="#">Privacy Policy</a>
+      </p>
+
+      <div class="social-row">
+        <a href="#" class="social-link"><img src="https://cdn.shopify.com/s/files/1/0665/1566/5104/files/Link.png?v=1773641692" width="40" height="40" alt="Facebook" /></a>
+        <a href="#" class="social-link"><img src="https://cdn.shopify.com/s/files/1/0665/1566/5104/files/inta_5d3fc53a-0dc5-47cb-b71a-40c2d0bb9e7a.png?v=1773641692" width="40" height="40" alt="Instagram" /></a>
+        <a href="#" class="social-link"><img src="https://cdn.shopify.com/s/files/1/0665/1566/5104/files/x_64d4de5c-b939-449d-bba1-f57a64af6a23.png?v=1773641692" width="40" height="40" alt="X" /></a>
+        <a href="#" class="social-link"><img src="https://cdn.shopify.com/s/files/1/0665/1566/5104/files/linkedin_7d996dd6-6762-4a28-9b13-121c6b574654.png?v=1773641692" width="40" height="40" alt="LinkedIn" /></a>
+      </div>
+      
+      <div class="footer-legal">
+        Jixta - 123 Design Avenue, New York, NY 10001<br />
+        <a href="#">Unsubscribe</a> - <a href="#">Manage preferences</a>
+      </div>
+      
+      <h2 class="social-cta">LET'S GET SOCIAL!</h2>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
