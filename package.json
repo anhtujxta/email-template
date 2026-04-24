@@ -1,0 +1,19 @@
+{
+  "name": "jixta-quote-pdf-worker",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "npm run build:template",
+    "build:template": "node scripts/build-template.mjs",
+    "check": "npm run build:template && tsc --noEmit",
+    "dev": "npm run build:template && wrangler dev",
+    "deploy": "npm run build:template && wrangler deploy",
+    "render:sample": "npm run build:template && node scripts/render-sample.ts"
+  },
+  "devDependencies": {
+    "@cloudflare/puppeteer": "latest",
+    "@cloudflare/workers-types": "latest",
+    "typescript": "latest",
+    "wrangler": "latest"
+  }
+}

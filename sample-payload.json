@@ -1,0 +1,72 @@
+{
+  "customer": {
+    "name": "John Doe",
+    "email": "john@example.com",
+    "phone": "+1 555 000 1111"
+  },
+  "quote": {
+    "number": "QT-2026-00125",
+    "createdAt": "2026-04-24",
+    "ctaUrl": "https://jixta.com/cart",
+    "ctaText": "Return to my cart",
+    "deliveryLabel": "Estimated Delivery",
+    "deliveryRange": "Mar 03 to Mar 06",
+    "additionalInstructions": "Delivery before Christmas"
+  },
+  "product": {
+    "heroTitle": "Your Sign Quote Summary",
+    "heroCopy": "Thanks for choosing us for neon logo LED signs. Here is the full summary of what you selected:",
+    "previewImageUrl": "https://cdn.shopify.com/s/files/1/0803/2216/7027/files/neon-sign-preview.png?v=1777012233",
+    "previewImageAlt": "Neon sign preview",
+    "title": "Indoor Product: Neon Static Signs",
+    "subtitle": "Size selected 22 in - Cut to shape - Static",
+    "changeRequest": "Change the light color of the garage text into red"
+  },
+  "options": [
+    "Double-Sided LED +$50",
+    "US Plug +$50"
+  ],
+  "specifications": [
+    {
+      "label": "Sign Type",
+      "value": "Neon Static Sign"
+    },
+    {
+      "label": "Size",
+      "value": "22 in Width x 14 in Height"
+    },
+    {
+      "label": "Intended Use",
+      "value": "Indoor Branding"
+    },
+    {
+      "label": "Mounting",
+      "value": "Wall Mount (Flush)"
+    },
+    {
+      "label": "Power",
+      "value": "US Standard Plug (12V)"
+    },
+    {
+      "label": "Voltage",
+      "value": "110V - 240V"
+    },
+    {
+      "label": "Warranty",
+      "value": "36 Months"
+    }
+  ],
+  "brand": {
+    "pageTitle": "Your Sign Quote Summary - JIXTA",
+    "previewText": "Your sign quote summary is ready with order details, specifications, delivery estimate, and next steps.",
+    "logoUrl": "https://cdn.shopify.com/s/files/1/0803/2216/7027/files/jixta-logo.png?v=1777012232",
+    "logoAlt": "JIXTA",
+    "companyAddress": "5900 Balcones Dr Ste 100, Austin, TX 78731, USA",
+    "supportPhone": "+1 (409) 916-7828",
+    "supportEmail": "Support@jixta.com",
+    "facebookUrl": "https://facebook.com/jixta",
+    "instagramUrl": "https://instagram.com/jixta",
+    "twitterUrl": "https://twitter.com/jixta",
+    "linkedinUrl": "https://linkedin.com/company/jixta"
+  }
+}
