@@ -1,8 +1,8 @@
-import puppeteer from "@cloudflare/puppeteer";
+import puppeteer, { type BrowserWorker } from "@cloudflare/puppeteer";
 import { renderQuoteTemplate, SAMPLE_PAYLOAD, type QuoteTemplatePayload } from "./render.ts";
 
 interface Env {
-  BROWSER: Fetcher;
+  BROWSER: BrowserWorker;
 }
 
 const corsHeaders = {

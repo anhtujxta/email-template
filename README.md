@@ -98,7 +98,7 @@ Payload hỗ trợ các nhóm dữ liệu:
 
 Khi connect repo này vào Cloudflare Workers Builds, dùng các giá trị sau:
 
-- Worker name: `jixta-quote-pdf`
+- Worker name: `email-template`
 - Production branch: `main`
 - Root directory: để trống nếu repo này là repo riêng
 - Build command: `npm run build`

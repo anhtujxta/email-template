@@ -1,5 +1,7 @@
 node_modules
 .wrangler
+.wrangler-out
+.cfconfig
 dist
 coverage
 .DS_Store
