@@ -61,7 +61,7 @@ export const SAMPLE_PAYLOAD: QuoteTemplatePayload = {
   },
   product: {
     heroTitle: "Your Sign Quote Summary",
-    heroCopy: "Thanks for choosing us for neon logo LED signs. Here is the full summary of what you selected:",
+    heroCopy: "Thanks for choosing us for your neon logo LED sign. Review the final configuration below before checkout.",
     previewImageUrl: "https://cdn.shopify.com/s/files/1/0803/2216/7027/files/neon-sign-preview.png?v=1777012233",
     previewImageAlt: "Neon sign preview",
     title: "Indoor Product: Neon Static Signs",
@@ -127,26 +127,19 @@ export function renderQuoteTemplate(payload: QuoteTemplatePayload = {}): string 
     LOGO_ALT: escapeHtml(data.brand.logoAlt),
     HERO_TITLE: escapeHtml(data.product.heroTitle),
     HERO_COPY: escapeHtml(data.product.heroCopy),
-    CUSTOMER_INFO_SECTION: buildCustomerInfoSection(data),
     PREVIEW_IMAGE_URL: sanitizeAssetUrl(data.product.previewImageUrl, SAMPLE_PAYLOAD.product?.previewImageUrl ?? ""),
     PREVIEW_IMAGE_ALT: escapeHtml(data.product.previewImageAlt),
     PRODUCT_TITLE: escapeHtml(data.product.title),
     PRODUCT_SUBTITLE: escapeHtml(data.product.subtitle),
     OPTION_BADGES: buildOptionBadges(data.options),
-    CHANGE_REQUEST_SECTION: buildChangeRequestSection(data.product.changeRequest),
-    SPECIFICATION_ROWS: buildSpecificationRows(data.specifications),
-    DELIVERY_LABEL: escapeHtml(data.quote.deliveryLabel),
-    DELIVERY_RANGE: escapeHtml(data.quote.deliveryRange),
-    ADDITIONAL_INSTRUCTIONS_SECTION: buildAdditionalInstructionsSection(data.quote.additionalInstructions),
+    QUOTE_META_ITEMS: buildQuoteMetaItems(data),
+    DELIVERY_CARD: buildDeliveryCard(data.quote.deliveryLabel, data.quote.deliveryRange),
+    SPECIFICATION_ITEMS: buildSpecificationItems(data.specifications),
+    NOTES_SECTION: buildNotesSection(data),
     CTA_URL: sanitizeHref(data.quote.ctaUrl, SAMPLE_PAYLOAD.quote?.ctaUrl ?? "https://jixta.com/cart"),
     CTA_TEXT: escapeHtml(data.quote.ctaText),
-    FACEBOOK_URL: sanitizeHref(data.brand.facebookUrl, SAMPLE_PAYLOAD.brand?.facebookUrl ?? "https://facebook.com/jixta"),
-    INSTAGRAM_URL: sanitizeHref(data.brand.instagramUrl, SAMPLE_PAYLOAD.brand?.instagramUrl ?? "https://instagram.com/jixta"),
-    TWITTER_URL: sanitizeHref(data.brand.twitterUrl, SAMPLE_PAYLOAD.brand?.twitterUrl ?? "https://twitter.com/jixta"),
-    LINKEDIN_URL: sanitizeHref(data.brand.linkedinUrl, SAMPLE_PAYLOAD.brand?.linkedinUrl ?? "https://linkedin.com/company/jixta"),
     COMPANY_ADDRESS: escapeHtml(data.brand.companyAddress),
-    SUPPORT_PHONE: escapeHtml(data.brand.supportPhone),
-    SUPPORT_EMAIL: escapeHtml(data.brand.supportEmail)
+    SUPPORT_LINE: buildSupportLine(data)
   };
 
   let html = BASE_TEMPLATE;
@@ -209,7 +202,7 @@ function mergePayload(payload: QuoteTemplatePayload): ResolvedPayload {
   };
 }
 
-function buildCustomerInfoSection(payload: ResolvedPayload): string {
+function buildQuoteMetaItems(payload: ResolvedPayload): string {
   const rows: Array<{ label: string; value: string }> = [];
 
   if (payload.customer.name) {
@@ -228,50 +221,13 @@ function buildCustomerInfoSection(payload: ResolvedPayload): string {
     rows.push({ label: "Created", value: payload.quote.createdAt });
   }
 
-  if (rows.length === 0) {
-    return "";
-  }
-
-  const content = rows
-    .map((row, index) => {
-      const isLast = index === rows.length - 1;
-      return `
-                <tr>
-                  <td style="${isLast ? "padding: 8px 0 0;" : "border-bottom: 1px solid #edeef0; padding: 8px 0 9px;"}">
-                    <table role="presentation" class="spec-row-table" width="100%" cellpadding="0" cellspacing="0" border="0">
-                      <tr>
-                        <td style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 16px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #414754; white-space: nowrap; padding-right: 16px;">
-                          ${escapeHtml(row.label)}
-                        </td>
-                        <td class="spec-value" align="right" style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 20px; font-weight: 500; color: #191C1E;">
-                          ${escapeHtml(row.value)}
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>`;
-    })
+  return rows
+    .map((row) => `
+            <div class="meta-item">
+              <div class="meta-label">${escapeHtml(row.label)}</div>
+              <div class="meta-value">${escapeHtml(row.value)}</div>
+            </div>`)
     .join("");
-
-  return `
-                <tr>
-                  <td style="padding-bottom: 24px;">
-                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width: 100%; background-color: #ffffff; border: 1px solid #e7e8ea; border-radius: 16px;">
-                      <tr>
-                        <td class="card-pad" style="padding: 25px;">
-                          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-                            <tr>
-                              <td style="font-family: Arial, Helvetica, sans-serif; font-size: 18px; line-height: 28px; font-weight: 700; color: #191C1E; padding-bottom: 16px;">
-                                Quote details
-                              </td>
-                            </tr>
-                            ${content}
-                          </table>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>`;
 }
 
 function buildOptionBadges(options: Array<string | { label: string }>): string {
@@ -284,106 +240,75 @@ function buildOptionBadges(options: Array<string | { label: string }>): string {
     return "";
   }
 
-  const cells = labels
-    .map((label) => `
-                                                <td style="padding-right: 12px; padding-bottom: 8px;">
-                                                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="background-color: #d6e3ff; border-radius: 12px;">
-                                                    <tr>
-                                                      <td style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 16px; font-weight: 700; color: #00468c; padding: 6px 16px; white-space: nowrap;">
-                                                        ${escapeHtml(label)}
-                                                      </td>
-                                                    </tr>
-                                                  </table>
-                                                </td>`)
+  const badges = labels
+    .map((label) => `<span class="badge">${escapeHtml(label)}</span>`)
     .join("");
 
-  return `
-                                            <table role="presentation" cellpadding="0" cellspacing="0" border="0">
-                                              <tr>${cells}
-                                              </tr>
-                                            </table>`;
+  return `<div class="badge-row">${badges}</div>`;
 }
 
-function buildChangeRequestSection(changeRequest: string): string {
-  if (!changeRequest.trim()) {
+function buildDeliveryCard(label: string, range: string): string {
+  if (!range.trim()) {
     return "";
   }
 
   return `
-                            <tr>
-                              <td style="padding-top: 24px;">
-                                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width: 100%; background-color: #f2f4f6; border-radius: 12px;">
-                                  <tr>
-                                    <td style="padding: 24px;">
-                                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-                                        <tr>
-                                          <td style="font-family: Arial, Helvetica, sans-serif; font-size: 10px; line-height: 15px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #414754; padding-bottom: 12px;">
-                                            Request Changes
-                                          </td>
-                                        </tr>
-                                        <tr>
-                                          <td style="background-color: #ffffff; border: 1px solid #dee3ea; border-radius: 8px; font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 20px; color: #191C1E; padding: 17px;">
-                                            ${escapeHtml(changeRequest)}
-                                          </td>
-                                        </tr>
-                                      </table>
-                                    </td>
-                                  </tr>
-                                </table>
-                              </td>
-                            </tr>`;
+          <div class="delivery-card">
+            <p class="delivery-label">${escapeHtml(label || "Estimated Delivery")}</p>
+            <p class="delivery-range">${escapeHtml(range)}</p>
+          </div>`;
 }
 
-function buildSpecificationRows(rows: Array<{ label: string; value: string }>): string {
-  const normalizedRows = rows.filter((row) => row.label.trim() && row.value.trim());
-  if (normalizedRows.length === 0) {
-    return "";
-  }
-
-  return normalizedRows
-    .map((row, index) => {
-      const isLast = index === normalizedRows.length - 1;
-      return `
-                            <tr>
-                              <td style="${isLast ? "padding: 8px 0 0;" : "border-bottom: 1px solid #edeef0; padding: 8px 0 9px;"}">
-                                <table role="presentation" class="spec-row-table" width="100%" cellpadding="0" cellspacing="0" border="0">
-                                  <tr>
-                                    <td style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 16px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #414754; white-space: nowrap; padding-right: 16px;">
-                                      ${escapeHtml(row.label)}
-                                    </td>
-                                    <td class="spec-value" align="right" style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 20px; font-weight: 500; color: #191C1E;">
-                                      ${escapeHtml(row.value)}
-                                    </td>
-                                  </tr>
-                                </table>
-                              </td>
-                            </tr>`;
-    })
+function buildSpecificationItems(rows: Array<{ label: string; value: string }>): string {
+  return rows
+    .map((row) => `
+          <div class="spec-item">
+            <div class="spec-label">${escapeHtml(row.label)}</div>
+            <div class="spec-value">${escapeHtml(row.value)}</div>
+          </div>`)
     .join("");
 }
 
-function buildAdditionalInstructionsSection(additionalInstructions: string): string {
-  if (!additionalInstructions.trim()) {
+function buildNotesSection(payload: ResolvedPayload): string {
+  const notes: string[] = [];
+
+  if (payload.product.changeRequest.trim()) {
+    notes.push(`
+        <article class="note-card">
+          <p class="note-title">Requested Changes</p>
+          <p class="note-body">${escapeHtml(payload.product.changeRequest)}</p>
+        </article>`);
+  }
+
+  if (payload.quote.additionalInstructions.trim()) {
+    notes.push(`
+        <article class="note-card">
+          <p class="note-title">Additional Instructions</p>
+          <p class="note-body">${escapeHtml(payload.quote.additionalInstructions)}</p>
+        </article>`);
+  }
+
+  if (notes.length === 0) {
     return "";
   }
 
   return `
-                            <tr>
-                              <td style="padding-top: 8px;">
-                                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-                                  <tr>
-                                    <td style="font-family: Arial, Helvetica, sans-serif; font-size: 10px; line-height: 15px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #414754; padding-bottom: 8px;">
-                                      Additional Instructions
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td style="background-color: #ffffff; border: 1px solid #dee3ea; border-radius: 8px; font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 20px; color: #191C1E; padding: 17px;">
-                                      ${escapeHtml(additionalInstructions)}
-                                    </td>
-                                  </tr>
-                                </table>
-                              </td>
-                            </tr>`;
+      <section class="notes-grid">
+        ${notes.join("")}
+      </section>`;
+}
+
+function buildSupportLine(payload: ResolvedPayload): string {
+  const items: string[] = [];
+
+  if (payload.brand.supportPhone.trim()) {
+    items.push(`Phone: ${escapeHtml(payload.brand.supportPhone)}`);
+  }
+  if (payload.brand.supportEmail.trim()) {
+    items.push(`Email: ${escapeHtml(payload.brand.supportEmail)}`);
+  }
+
+  return items.join(" | ");
 }
 
 function escapeHtml(value: string): string {

@@ -105,17 +105,11 @@ async function renderPdf(html: string, env: Env): Promise<Blob> {
     const page = await browser.newPage();
     await page.setViewport({ width: 1200, height: 1600 });
     await page.setContent(html, { waitUntil: "networkidle0" });
-    await page.emulateMediaType("screen");
+    await page.emulateMediaType("print");
 
     const pdf = await page.pdf({
-      format: "A4",
       printBackground: true,
-      margin: {
-        top: "16px",
-        right: "16px",
-        bottom: "16px",
-        left: "16px"
-      }
+      preferCSSPageSize: true
     });
 
     return new Blob([pdf], { type: "application/pdf" });
