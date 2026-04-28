@@ -25,17 +25,7 @@ const STATIC_CONTENT = {
   pageTitle: "Your Sign Quote Summary - JIXTA",
   previewText:
     "Your sign quote summary is ready with order details, specifications, delivery estimate, and next steps.",
-  heroTitle: "Your Sign Quote Summary",
-  heroCopy:
-    "Thanks for choosing us for neon logo LED signs. Here's the full summary of what you selected:",
   deliveryLabel: "Estimated Delivery",
-  companyAddress: "5900 Balcones Dr Ste 100, Austin, TX 78731, USA",
-  supportPhone: "+1 (409) 916-7828",
-  supportEmail: "Support@jixta.com",
-  facebookUrl: "https://facebook.com/jixta",
-  instagramUrl: "https://instagram.com/jixta",
-  twitterUrl: "https://twitter.com/jixta",
-  linkedinUrl: "https://linkedin.com/company/jixta",
 };
 
 export const SAMPLE_PAYLOAD: QuoteTemplatePayload = {
@@ -94,8 +84,6 @@ export function renderQuoteTemplate(
   const tokens: Record<string, string> = {
     PAGE_TITLE: escapeHtml(STATIC_CONTENT.pageTitle),
     PREVIEW_TEXT: escapeHtml(STATIC_CONTENT.previewText),
-    HERO_TITLE: escapeHtml(STATIC_CONTENT.heroTitle),
-    HERO_COPY: escapeHtml(STATIC_CONTENT.heroCopy),
     PREVIEW_IMAGE_URL: sanitizeAssetUrl(
       data.product.previewImageUrl,
       SAMPLE_PAYLOAD.product?.previewImageUrl ?? "",
@@ -113,13 +101,6 @@ export function renderQuoteTemplate(
     ADDITIONAL_INSTRUCTIONS_SECTION: buildAdditionalInstructionsSection(
       data.quote.additionalInstructions,
     ),
-    COMPANY_ADDRESS: escapeHtml(STATIC_CONTENT.companyAddress),
-    SUPPORT_PHONE: escapeHtml(STATIC_CONTENT.supportPhone),
-    SUPPORT_EMAIL: escapeHtml(STATIC_CONTENT.supportEmail),
-    FACEBOOK_URL: sanitizeHref(STATIC_CONTENT.facebookUrl),
-    INSTAGRAM_URL: sanitizeHref(STATIC_CONTENT.instagramUrl),
-    TWITTER_URL: sanitizeHref(STATIC_CONTENT.twitterUrl),
-    LINKEDIN_URL: sanitizeHref(STATIC_CONTENT.linkedinUrl),
   };
 
   let html = BASE_TEMPLATE;
@@ -256,7 +237,7 @@ function buildAdditionalInstructionsSection(
   }
 
   return `
-        <div class="note-wrap" style="margin-top: 8px;">
+        <div class="delivery-note">
           <p class="note-label">Additional Instructions</p>
           <div class="note-body-box" style="border-radius: 4px;">
             <p class="note-body">"${escapeHtml(additionalInstructions)}"</p>
@@ -271,14 +252,6 @@ function escapeHtml(value: string): string {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
-}
-
-function sanitizeHref(value: string, fallback = "#"): string {
-  const url = value.trim();
-  if (/^(https?:\/\/|mailto:|tel:)/i.test(url)) {
-    return url;
-  }
-  return fallback;
 }
 
 function sanitizeAssetUrl(value: string, fallback: string): string {

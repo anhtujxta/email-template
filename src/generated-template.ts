@@ -9,7 +9,7 @@ export const BASE_TEMPLATE = String.raw`<!doctype html>
     <style>
       @page {
         size: A4 portrait;
-        margin: 12mm;
+        margin: 0;
       }
 
       * {
@@ -36,9 +36,64 @@ export const BASE_TEMPLATE = String.raw`<!doctype html>
       }
 
       .page {
-        width: 100%;
-        max-width: 564px;
+        width: 210mm;
+        min-height: 297mm;
         margin: 0 auto;
+        overflow: hidden;
+      }
+
+      .design-frame {
+        width: 595px;
+        min-height: 842px;
+        transform: scale(1.333333);
+        transform-origin: top left;
+      }
+
+      .site-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 595px;
+        height: 38.456px;
+        padding: 8px 19.535px;
+        border-bottom: 0.488px solid rgba(0, 0, 0, 0.1);
+        background: #0a0a0a;
+      }
+
+      .logo-pill {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 104.645px;
+        height: 22.456px;
+        border-bottom: 0.488px solid rgba(0, 191, 255, 0.3);
+        border-radius: 9.768px;
+        background: rgba(5, 5, 5, 0.2);
+        backdrop-filter: blur(3.663px);
+      }
+
+      .jixta-logo {
+        display: inline-flex;
+        align-items: center;
+        color: #ffffff;
+        font-family: Inter, Arial, Helvetica, sans-serif;
+        font-size: 11px;
+        line-height: 14.153px;
+        font-weight: 800;
+        letter-spacing: 0.2px;
+      }
+
+      .jixta-logo-x {
+        display: inline-block;
+        margin: 0 0.5px;
+        color: #2f6dff;
+        transform: skew(-10deg);
+      }
+
+      .main-content {
+        width: 595px;
+        height: 702.93px;
+        padding: 12px 28px 0;
       }
 
       .stack {
@@ -78,15 +133,29 @@ export const BASE_TEMPLATE = String.raw`<!doctype html>
         border-radius: 7.814px;
         background: #ffffff;
         padding: 12.488px;
+        display: flex;
+        flex-direction: column;
         page-break-inside: avoid;
       }
 
+      .order-card {
+        gap: 11.721px;
+      }
+
+      .spec-card {
+        gap: 7.814px;
+      }
+
       .card-title {
-        margin: 0 0 11.721px;
+        margin: 0;
         color: #191c1e;
         font-size: 10px;
         line-height: 13.675px;
         font-weight: 700;
+      }
+
+      .spec-title {
+        font-size: 8.791px;
       }
 
       .order-grid {
@@ -105,6 +174,19 @@ export const BASE_TEMPLATE = String.raw`<!doctype html>
         background: #f5f7fa;
       }
 
+      .order-details {
+        display: flex;
+        min-height: 62.513px;
+        flex-direction: column;
+        justify-content: space-between;
+        min-width: 0;
+      }
+
+      .product-copy {
+        display: grid;
+        gap: 5.861px;
+      }
+
       .product-title {
         margin: 0;
         color: #0a0a0f;
@@ -114,7 +196,7 @@ export const BASE_TEMPLATE = String.raw`<!doctype html>
       }
 
       .product-subtitle {
-        margin: 5.861px 0 0;
+        margin: 0;
         color: #0a0a0f;
         font-size: 11px;
         line-height: 13px;
@@ -126,7 +208,7 @@ export const BASE_TEMPLATE = String.raw`<!doctype html>
         display: flex;
         flex-wrap: wrap;
         gap: 8.571px;
-        margin-top: 10px;
+        margin-top: 0;
       }
 
       .badge {
@@ -145,7 +227,6 @@ export const BASE_TEMPLATE = String.raw`<!doctype html>
       }
 
       .note-wrap {
-        margin-top: 11.721px;
         border-radius: 5.861px;
         background: #f2f4f6;
         padding: 8px;
@@ -178,7 +259,7 @@ export const BASE_TEMPLATE = String.raw`<!doctype html>
 
       .spec-list {
         display: grid;
-        gap: 0;
+        gap: 3.907px;
       }
 
       .spec-item {
@@ -217,6 +298,9 @@ export const BASE_TEMPLATE = String.raw`<!doctype html>
         border-radius: 7.814px;
         background: #e7e8ea;
         padding: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 7.814px;
         page-break-inside: avoid;
       }
 
@@ -235,11 +319,17 @@ export const BASE_TEMPLATE = String.raw`<!doctype html>
       }
 
       .eta-range {
-        margin: 7.814px 0 0;
+        margin: 0;
         color: #191c1e;
         font-size: 11.721px;
         line-height: 15.628px;
         font-weight: 700;
+      }
+
+      .delivery-note {
+        display: grid;
+        gap: 8px;
+        padding-top: 3.907px;
       }
 
       .cta-wrap {
@@ -265,16 +355,22 @@ export const BASE_TEMPLATE = String.raw`<!doctype html>
 
       .features {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(3, 125.567px);
+        grid-template-rows: 44px;
         gap: 12.351px;
+        width: 401.404px;
+        height: 52px;
+        margin: 0 auto;
         padding-top: 8px;
       }
 
       .feature {
-        display: grid;
-        justify-items: center;
-        align-content: start;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         gap: 6.175px;
+        width: 125.567px;
         text-align: center;
       }
 
@@ -293,19 +389,30 @@ export const BASE_TEMPLATE = String.raw`<!doctype html>
       }
 
       .footer {
-        margin-top: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 595px;
+        height: 100.614px;
         border-radius: 0;
         background: linear-gradient(125.247deg, #090909 0%, #1e1a4d 100%);
-        padding: 10.161px 16.257px 20.322px;
+        padding: 0 16.257px;
         color: #ffffff;
         page-break-inside: avoid;
+      }
+
+      .footer-inner {
+        width: 272.312px;
       }
 
       .social-row {
         display: flex;
         justify-content: center;
         gap: 8.129px;
+        width: 272.312px;
+        height: 20.322px;
         margin: 0 auto 10.161px;
+        padding: 0 83.319px;
       }
 
       .social-link {
@@ -320,6 +427,13 @@ export const BASE_TEMPLATE = String.raw`<!doctype html>
         font-size: 8.129px;
         line-height: 12.193px;
         font-weight: 700;
+        letter-spacing: -0.159px;
+      }
+
+      .social-link svg {
+        width: 10.161px;
+        height: 10.161px;
+        display: block;
       }
 
       .footer-text {
@@ -348,7 +462,26 @@ export const BASE_TEMPLATE = String.raw`<!doctype html>
 
       @media screen and (max-width: 700px) {
         .page {
-          max-width: none;
+          width: 100%;
+          min-height: auto;
+        }
+
+        .design-frame {
+          width: 100%;
+          min-height: auto;
+          transform: none;
+        }
+
+        .site-header,
+        .main-content,
+        .footer {
+          width: 100%;
+        }
+
+        .main-content {
+          height: auto;
+          padding-right: 16px;
+          padding-left: 16px;
         }
 
         .order-grid {
@@ -368,12 +501,8 @@ export const BASE_TEMPLATE = String.raw`<!doctype html>
           text-align: left;
         }
 
-        .features {
-          grid-template-columns: 1fr;
-        }
-
         .feature-label {
-          white-space: normal;
+          white-space: nowrap;
         }
       }
 
@@ -390,13 +519,23 @@ export const BASE_TEMPLATE = String.raw`<!doctype html>
     </div>
 
     <main class="page">
-      <div class="stack">
+      <div class="design-frame">
+      <header class="site-header">
+        <div class="logo-pill" aria-label="JIXTA">
+          <span class="jixta-logo">JI<span class="jixta-logo-x">X</span>TA</span>
+        </div>
+      </header>
+
+      <div class="main-content">
+        <div class="stack">
         <section class="hero">
-          <h1 class="hero-title">{{HERO_TITLE}}</h1>
-          <p class="hero-copy">{{HERO_COPY}}</p>
+          <h1 class="hero-title">Your Sign Quote Summary</h1>
+          <p class="hero-copy">
+            Thanks for choosing us for neon logo LED signs. Here’s the full summary of what you selected:
+          </p>
         </section>
 
-        <section class="card">
+        <section class="card order-card">
           <h2 class="card-title">Order summary</h2>
           <div class="order-grid">
             <img
@@ -404,17 +543,19 @@ export const BASE_TEMPLATE = String.raw`<!doctype html>
               src="{{PREVIEW_IMAGE_URL}}"
               alt="{{PREVIEW_IMAGE_ALT}}"
             />
-            <div>
-              <p class="product-title">{{PRODUCT_TITLE}}</p>
-              <p class="product-subtitle">{{PRODUCT_SUBTITLE}}</p>
+            <div class="order-details">
+              <div class="product-copy">
+                <p class="product-title">{{PRODUCT_TITLE}}</p>
+                <p class="product-subtitle">{{PRODUCT_SUBTITLE}}</p>
+              </div>
               {{OPTION_BADGES}}
             </div>
           </div>
           {{CHANGE_REQUEST_SECTION}}
         </section>
 
-        <section class="card">
-          <h2 class="card-title">Specifications</h2>
+        <section class="card spec-card">
+          <h2 class="card-title spec-title">Specifications</h2>
           <div class="spec-list">{{SPECIFICATION_ROWS}}</div>
         </section>
 
@@ -564,28 +705,45 @@ export const BASE_TEMPLATE = String.raw`<!doctype html>
             <div class="feature-label">Warranty &amp; Service</div>
           </div>
         </section>
+        </div>
+      </div>
 
         <footer class="footer">
+          <div class="footer-inner">
           <div class="social-row">
-            <a class="social-link" href="{{FACEBOOK_URL}}" aria-label="Facebook"
+            <a class="social-link" href="https://facebook.com/jixta" aria-label="Facebook"
               >f</a
             >
             <a
               class="social-link"
-              href="{{INSTAGRAM_URL}}"
+              href="https://instagram.com/jixta"
               aria-label="Instagram"
-              >IG</a
+              >
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="5" y="5" width="14" height="14" rx="4" stroke="currentColor" stroke-width="2"></rect>
+                <circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="2"></circle>
+                <circle cx="16.8" cy="7.2" r="1" fill="currentColor"></circle>
+              </svg>
+            </a
             >
-            <a class="social-link" href="{{TWITTER_URL}}" aria-label="Twitter"
+            <a class="social-link" href="https://twitter.com/jixta" aria-label="Twitter"
               >T</a
             >
-            <a class="social-link" href="{{LINKEDIN_URL}}" aria-label="LinkedIn"
-              >in</a
+            <a class="social-link" href="https://linkedin.com/company/jixta" aria-label="LinkedIn"
+              >
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M7.2 10.1V18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                <path d="M11.2 18V10.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                <path d="M11.2 13.4C11.2 11.6 12.3 10 14.5 10C16.6 10 17.6 11.4 17.6 13.7V18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                <circle cx="7.2" cy="7" r="1.2" fill="currentColor"></circle>
+              </svg>
+            </a
             >
           </div>
-          <p class="footer-text">{{COMPANY_ADDRESS}}</p>
-          <p class="footer-text">Phone: {{SUPPORT_PHONE}}</p>
-          <p class="footer-text">Email: {{SUPPORT_EMAIL}}</p>
+          <p class="footer-text">5900 Balcones Dr Ste 100, Austin, TX 78731, USA</p>
+          <p class="footer-text">Phone: +1 (409) 916-7828</p>
+          <p class="footer-text">Email: Support@jixta.com</p>
+          </div>
         </footer>
       </div>
     </main>
