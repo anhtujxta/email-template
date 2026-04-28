@@ -1,452 +1,592 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{PAGE_TITLE}}</title>
-  <style>
-    @page {
-      size: A4 portrait;
-      margin: 10mm;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{PAGE_TITLE}}</title>
+    <style>
+      @page {
+        size: A4 portrait;
+        margin: 12mm;
+      }
 
-    :root {
-      color-scheme: light;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+      * {
+        box-sizing: border-box;
+      }
 
-    * {
-      box-sizing: border-box;
-    }
+      body {
+        margin: 0;
+        padding: 0;
+        background: #ffffff;
+        color: #191c1e;
+        font-family: Inter, Arial, Helvetica, sans-serif;
+      }
 
-    body {
-      margin: 0;
-      padding: 0;
-      background: #eef2f7;
-      color: #111827;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    .page {
-      width: 190mm;
-      min-height: 276mm;
-      margin: 0 auto;
-      padding: 10mm;
-      background: #ffffff;
-      border: 1px solid #d7deea;
-      border-radius: 18px;
-    }
-
-    .header {
-      display: grid;
-      grid-template-columns: 132px minmax(0, 1fr);
-      gap: 16px;
-      align-items: start;
-      padding-bottom: 10px;
-      border-bottom: 1px solid #e5e7eb;
-    }
-
-    .logo {
-      width: 132px;
-    }
-
-    .eyebrow {
-      margin: 0 0 6px;
-      font-size: 10px;
-      font-weight: 700;
-      line-height: 12px;
-      letter-spacing: 1.4px;
-      text-transform: uppercase;
-      color: #2563eb;
-    }
-
-    .hero-title {
-      margin: 0;
-      font-size: 23px;
-      line-height: 28px;
-      font-weight: 700;
-      color: #0f172a;
-    }
-
-    .hero-copy {
-      margin: 8px 0 0;
-      font-size: 12px;
-      line-height: 18px;
-      color: #475569;
-      max-width: 440px;
-    }
-
-    .stack {
-      display: grid;
-      gap: 11px;
-      margin-top: 11px;
-    }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
-      gap: 11px;
-    }
-
-    .card {
-      border: 1px solid #e5e7eb;
-      border-radius: 14px;
-      background: #ffffff;
-      padding: 12px;
-      page-break-inside: avoid;
-    }
-
-    .card-muted {
-      background: #f8fbff;
-    }
-
-    .section-kicker {
-      margin: 0 0 9px;
-      font-size: 10px;
-      line-height: 12px;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      color: #64748b;
-    }
-
-    .product-layout {
-      display: grid;
-      grid-template-columns: 204px minmax(0, 1fr);
-      gap: 12px;
-      align-items: start;
-    }
-
-    .product-image {
-      width: 204px;
-      height: 132px;
-      border: 1px solid #d5dbe5;
-      border-radius: 10px;
-      object-fit: cover;
-      background: #f8fafc;
-    }
-
-    .product-title {
-      margin: 0;
-      font-size: 17px;
-      line-height: 22px;
-      font-weight: 700;
-      color: #111827;
-    }
-
-    .product-subtitle {
-      margin: 7px 0 0;
-      font-size: 12px;
-      line-height: 17px;
-      color: #475569;
-    }
-
-    .badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 10px;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      padding: 4px 8px;
-      border-radius: 999px;
-      background: #dbeafe;
-      color: #1d4ed8;
-      font-size: 10px;
-      line-height: 12px;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .meta-list {
-      display: grid;
-      gap: 7px;
-    }
-
-    .meta-item,
-    .spec-item {
-      display: grid;
-      grid-template-columns: 92px minmax(0, 1fr);
-      gap: 10px;
-      align-items: start;
-    }
-
-    .meta-item {
-      padding-bottom: 7px;
-      border-bottom: 1px solid #e5e7eb;
-    }
-
-    .meta-item:last-child {
-      padding-bottom: 0;
-      border-bottom: 0;
-    }
-
-    .meta-label,
-    .spec-label {
-      font-size: 10px;
-      line-height: 12px;
-      font-weight: 700;
-      letter-spacing: 1.1px;
-      text-transform: uppercase;
-      color: #64748b;
-    }
-
-    .meta-value,
-    .spec-value {
-      font-size: 12px;
-      line-height: 16px;
-      font-weight: 600;
-      color: #111827;
-      text-align: right;
-      word-break: break-word;
-    }
-
-    .delivery-card {
-      margin-top: 10px;
-      padding: 10px 11px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #eff6ff 0%, #e0f2fe 100%);
-      border: 1px solid #bfdbfe;
-    }
-
-    .delivery-label {
-      margin: 0;
-      font-size: 10px;
-      line-height: 12px;
-      font-weight: 700;
-      letter-spacing: 1.1px;
-      text-transform: uppercase;
-      color: #1d4ed8;
-    }
-
-    .delivery-range {
-      margin: 5px 0 0;
-      font-size: 18px;
-      line-height: 22px;
-      font-weight: 700;
-      color: #0f172a;
-    }
-
-    .spec-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 8px;
-    }
-
-    .spec-title {
-      margin: 0;
-      font-size: 17px;
-      line-height: 22px;
-      font-weight: 700;
-      color: #111827;
-    }
-
-    .cta-chip {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: #0f172a;
-      color: #ffffff;
-      font-size: 10px;
-      line-height: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      white-space: nowrap;
-    }
-
-    .spec-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 8px 16px;
-      align-items: start;
-    }
-
-    .spec-item {
-      padding-top: 8px;
-      border-top: 1px solid #edf1f5;
-    }
-
-    .notes-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 11px;
-    }
-
-    .note-card {
-      border: 1px solid #e5e7eb;
-      border-radius: 14px;
-      background: #ffffff;
-      padding: 11px 12px;
-      page-break-inside: avoid;
-    }
-
-    .note-title {
-      margin: 0 0 7px;
-      font-size: 10px;
-      line-height: 12px;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      color: #64748b;
-    }
-
-    .note-body {
-      margin: 0;
-      font-size: 12px;
-      line-height: 17px;
-      color: #334155;
-    }
-
-    .footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding-top: 10px;
-      border-top: 1px solid #e5e7eb;
-      font-size: 10px;
-      line-height: 14px;
-      color: #64748b;
-    }
-
-    .footer-address {
-      max-width: 58%;
-    }
-
-    .footer-support {
-      text-align: right;
-    }
-
-    @media screen and (max-width: 900px) {
-      .page {
-        width: auto;
-        min-height: auto;
-        border-radius: 0;
+      img {
+        display: block;
+        max-width: 100%;
         border: 0;
       }
 
-      .header,
-      .two-col,
-      .product-layout,
-      .spec-grid,
-      .notes-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .product-image {
+      .page {
         width: 100%;
-        height: auto;
+        max-width: 564px;
+        margin: 0 auto;
       }
 
-      .meta-value,
-      .spec-value,
-      .footer-support {
+      .stack {
+        display: grid;
+        gap: 12px;
+      }
+
+      .hero {
+        display: grid;
+        gap: 8px;
+        justify-items: center;
+        text-align: center;
+      }
+
+      .hero-title {
+        margin: 0;
+        color: #191c1e;
+        font-size: 14.652px;
+        line-height: 17.582px;
+        font-weight: 700;
+        letter-spacing: -0.366px;
+      }
+
+      .hero-copy {
+        width: 100%;
+        margin: 0;
+        color: #000000;
+        font-size: 12px;
+        line-height: 14.652px;
+        font-weight: 400;
         text-align: left;
       }
 
-      .footer {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .footer-address {
-        max-width: none;
-      }
-    }
-
-    @media print {
-      body {
+      .card {
+        width: 100%;
+        border: 0.488px solid #e7e8ea;
+        border-radius: 7.814px;
         background: #ffffff;
+        padding: 12.488px;
+        page-break-inside: avoid;
       }
 
-      .page {
-        width: auto;
-        min-height: auto;
+      .card-title {
+        margin: 0 0 11.721px;
+        color: #191c1e;
+        font-size: 10px;
+        line-height: 13.675px;
+        font-weight: 700;
+      }
+
+      .order-grid {
+        display: grid;
+        grid-template-columns: 91.817px minmax(0, 1fr);
+        gap: 17.582px;
+        align-items: center;
+      }
+
+      .order-image {
+        width: 91.817px;
+        height: 62.513px;
+        border: 0.488px solid #42454e;
+        border-radius: 1.954px;
+        object-fit: cover;
+        background: #f5f7fa;
+      }
+
+      .product-title {
         margin: 0;
-        border: 0;
-        border-radius: 0;
-        padding: 0;
+        color: #0a0a0f;
+        font-size: 13px;
+        line-height: 16px;
+        font-weight: 700;
       }
-    }
-  </style>
-</head>
-<body>
-  <div style="display: none; max-height: 0; overflow: hidden; opacity: 0;">
-    {{PREVIEW_TEXT}}
-  </div>
 
-  <main class="page">
-    <header class="header">
-      <img class="logo" src="{{LOGO_URL}}" alt="{{LOGO_ALT}}" />
-      <div>
-        <p class="eyebrow">Custom LED Sign Quote</p>
-        <h1 class="hero-title">{{HERO_TITLE}}</h1>
-        <p class="hero-copy">{{HERO_COPY}}</p>
-      </div>
-    </header>
+      .product-subtitle {
+        margin: 5.861px 0 0;
+        color: #0a0a0f;
+        font-size: 11px;
+        line-height: 13px;
+        font-weight: 400;
+        white-space: pre-wrap;
+      }
 
-    <div class="stack">
-      <section class="two-col">
-        <article class="card">
-          <p class="section-kicker">Product Overview</p>
-          <div class="product-layout">
-            <img class="product-image" src="{{PREVIEW_IMAGE_URL}}" alt="{{PREVIEW_IMAGE_ALT}}" />
+      .badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8.571px;
+        margin-top: 10px;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        min-height: 20px;
+        padding: 3.929px 11.429px 4.643px;
+        border-radius: 8.571px;
+        background: #d6e3ff;
+        color: #00468c;
+        font-family: Manrope, Arial, Helvetica, sans-serif;
+        font-size: 8.571px;
+        line-height: 11.429px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      .note-wrap {
+        margin-top: 11.721px;
+        border-radius: 5.861px;
+        background: #f2f4f6;
+        padding: 8px;
+      }
+
+      .note-label {
+        margin: 0 0 5.861px;
+        color: #414754;
+        font-size: 10px;
+        line-height: 7.326px;
+        font-weight: 700;
+        letter-spacing: 0.488px;
+        text-transform: uppercase;
+      }
+
+      .note-body-box {
+        border: 0.488px solid rgba(192, 198, 214, 0.2);
+        border-radius: 3.907px;
+        background: #ffffff;
+        padding: 8.302px;
+      }
+
+      .note-body {
+        margin: 0;
+        color: #191c1e;
+        font-size: 10px;
+        line-height: 9.768px;
+        font-weight: 400;
+      }
+
+      .spec-list {
+        display: grid;
+        gap: 0;
+      }
+
+      .spec-item {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(120px, auto);
+        align-items: start;
+        gap: 12px;
+        padding: 3.907px 0 4.395px;
+        border-bottom: 0.488px solid #edeef0;
+      }
+
+      .spec-item:last-child {
+        border-bottom: 0;
+      }
+
+      .spec-label {
+        color: #414754;
+        font-size: 10px;
+        line-height: 7.814px;
+        font-weight: 700;
+        letter-spacing: 0.586px;
+        text-transform: uppercase;
+      }
+
+      .spec-value {
+        color: #191c1e;
+        font-size: 11px;
+        line-height: 9.768px;
+        font-weight: 500;
+        text-align: right;
+        word-break: break-word;
+      }
+
+      .eta-card {
+        width: 100%;
+        border-radius: 7.814px;
+        background: #e7e8ea;
+        padding: 12px;
+        page-break-inside: avoid;
+      }
+
+      .eta-head {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .eta-title {
+        margin: 0;
+        color: #005bb3;
+        font-size: 12px;
+        line-height: 11.721px;
+        font-weight: 700;
+      }
+
+      .eta-range {
+        margin: 7.814px 0 0;
+        color: #191c1e;
+        font-size: 11.721px;
+        line-height: 15.628px;
+        font-weight: 700;
+      }
+
+      .cta-wrap {
+        display: flex;
+        justify-content: center;
+      }
+
+      .cta-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 11.52px 17.28px;
+        border-radius: 5.76px;
+        background: linear-gradient(133.64deg, #00bfff 0%, #0052cc 100%);
+        color: #ffffff;
+        font-family: Lexend, Arial, Helvetica, sans-serif;
+        font-size: 12.24px;
+        line-height: 12.96px;
+        font-weight: 600;
+        text-align: center;
+        white-space: nowrap;
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12.351px;
+        padding-top: 8px;
+      }
+
+      .feature {
+        display: grid;
+        justify-items: center;
+        align-content: start;
+        gap: 6.175px;
+        text-align: center;
+      }
+
+      .feature.icon-shift {
+        padding-bottom: 9.649px;
+      }
+
+      .feature-label {
+        color: #191c1e;
+        font-family: Manrope, Arial, Helvetica, sans-serif;
+        font-size: 7.719px;
+        line-height: 9.649px;
+        font-weight: 700;
+        text-align: center;
+        white-space: nowrap;
+      }
+
+      .footer {
+        margin-top: 2px;
+        border-radius: 0;
+        background: linear-gradient(125.247deg, #090909 0%, #1e1a4d 100%);
+        padding: 10.161px 16.257px 20.322px;
+        color: #ffffff;
+        page-break-inside: avoid;
+      }
+
+      .social-row {
+        display: flex;
+        justify-content: center;
+        gap: 8.129px;
+        margin: 0 auto 10.161px;
+      }
+
+      .social-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 20.322px;
+        height: 20.322px;
+        border: 0.508px solid #ffffff;
+        border-radius: 999px;
+        color: #ffffff;
+        font-size: 8.129px;
+        line-height: 12.193px;
+        font-weight: 700;
+      }
+
+      .footer-text {
+        margin: 0;
+        color: #ffffff;
+        font-size: 9px;
+        line-height: 15.2px;
+        font-weight: 400;
+        text-align: center;
+      }
+
+      .icon {
+        display: block;
+        flex: 0 0 auto;
+      }
+
+      .icon-clock {
+        width: 20px;
+        height: 20px;
+      }
+
+      .icon-feature {
+        width: 18.526px;
+        height: 18.526px;
+      }
+
+      @media screen and (max-width: 700px) {
+        .page {
+          max-width: none;
+        }
+
+        .order-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .order-image {
+          width: 100%;
+          height: auto;
+        }
+
+        .spec-item {
+          grid-template-columns: 1fr;
+        }
+
+        .spec-value {
+          text-align: left;
+        }
+
+        .features {
+          grid-template-columns: 1fr;
+        }
+
+        .feature-label {
+          white-space: normal;
+        }
+      }
+
+      @media print {
+        body {
+          background: #ffffff;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div style="display: none; max-height: 0; overflow: hidden; opacity: 0">
+      {{PREVIEW_TEXT}}
+    </div>
+
+    <main class="page">
+      <div class="stack">
+        <section class="hero">
+          <h1 class="hero-title">{{HERO_TITLE}}</h1>
+          <p class="hero-copy">{{HERO_COPY}}</p>
+        </section>
+
+        <section class="card">
+          <h2 class="card-title">Order summary</h2>
+          <div class="order-grid">
+            <img
+              class="order-image"
+              src="{{PREVIEW_IMAGE_URL}}"
+              alt="{{PREVIEW_IMAGE_ALT}}"
+            />
             <div>
-              <h2 class="product-title">{{PRODUCT_TITLE}}</h2>
+              <p class="product-title">{{PRODUCT_TITLE}}</p>
               <p class="product-subtitle">{{PRODUCT_SUBTITLE}}</p>
               {{OPTION_BADGES}}
             </div>
           </div>
-        </article>
+          {{CHANGE_REQUEST_SECTION}}
+        </section>
 
-        <article class="card card-muted">
-          <p class="section-kicker">Quote Details</p>
-          <div class="meta-list">
-            {{QUOTE_META_ITEMS}}
+        <section class="card">
+          <h2 class="card-title">Specifications</h2>
+          <div class="spec-list">{{SPECIFICATION_ROWS}}</div>
+        </section>
+
+        <section class="eta-card">
+          <div class="eta-head">
+            <svg
+              class="icon icon-clock"
+              viewBox="0 0 20 20"
+              fill="none"
+              aria-hidden="true"
+            >
+              <circle
+                cx="10"
+                cy="10"
+                r="8.75"
+                stroke="#005BB3"
+                stroke-width="1.5"
+              ></circle>
+              <path
+                d="M10 5.8V10.15L12.9 12.2"
+                stroke="#005BB3"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+            <p class="eta-title">{{DELIVERY_LABEL}}</p>
           </div>
-          {{DELIVERY_CARD}}
-        </article>
-      </section>
+          <p class="eta-range">{{DELIVERY_RANGE}}</p>
+          {{ADDITIONAL_INSTRUCTIONS_SECTION}}
+        </section>
 
-      <section class="card">
-        <div class="spec-header">
-          <div>
-            <p class="section-kicker">Technical Summary</p>
-            <h2 class="spec-title">Specifications</h2>
+        <div class="cta-wrap">
+          <a class="cta-button" href="https://jixta.com/cart">Return to my cart</a>
+        </div>
+
+        <section class="features">
+          <div class="feature">
+            <svg
+              class="icon icon-feature"
+              viewBox="0 0 19 19"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M2.2 11.1H11.7V4.4H2.2V11.1Z"
+                stroke="#0068D6"
+                stroke-width="1.2"
+                stroke-linejoin="round"
+              ></path>
+              <path
+                d="M11.7 6.1H14.5L16.6 8.7V11.1H11.7V6.1Z"
+                stroke="#0068D6"
+                stroke-width="1.2"
+                stroke-linejoin="round"
+              ></path>
+              <circle
+                cx="5.1"
+                cy="13.9"
+                r="1.6"
+                stroke="#0068D6"
+                stroke-width="1.2"
+              ></circle>
+              <circle
+                cx="13.7"
+                cy="13.9"
+                r="1.6"
+                stroke="#0068D6"
+                stroke-width="1.2"
+              ></circle>
+            </svg>
+            <div class="feature-label">Nationwide Delivery</div>
           </div>
-          <a class="cta-chip" href="{{CTA_URL}}">{{CTA_TEXT}}</a>
-        </div>
-        <div class="spec-grid">
-          {{SPECIFICATION_ITEMS}}
-        </div>
-      </section>
+          <div class="feature icon-shift">
+            <svg
+              class="icon icon-feature"
+              viewBox="0 0 19 19"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M6.1 4.3H13.3L11.4 2.4"
+                stroke="#0068D6"
+                stroke-width="1.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+              <path
+                d="M13.3 4.3L11.4 6.2"
+                stroke="#0068D6"
+                stroke-width="1.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+              <path
+                d="M12.9 14.7H5.7L7.6 16.6"
+                stroke="#0068D6"
+                stroke-width="1.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+              <path
+                d="M5.7 14.7L7.6 12.8"
+                stroke="#0068D6"
+                stroke-width="1.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+              <circle
+                cx="6"
+                cy="9.5"
+                r="2.2"
+                stroke="#0068D6"
+                stroke-width="1.2"
+              ></circle>
+              <circle
+                cx="13"
+                cy="9.5"
+                r="2.2"
+                stroke="#0068D6"
+                stroke-width="1.2"
+              ></circle>
+            </svg>
+            <div class="feature-label">1:1 Replacement</div>
+          </div>
+          <div class="feature icon-shift">
+            <svg
+              class="icon icon-feature"
+              viewBox="0 0 19 19"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M9.5 2.5L14.7 4.6V9.2C14.7 12.2 12.7 14.9 9.5 16.2C6.3 14.9 4.3 12.2 4.3 9.2V4.6L9.5 2.5Z"
+                stroke="#0068D6"
+                stroke-width="1.2"
+                stroke-linejoin="round"
+              ></path>
+              <path
+                d="M7.3 9.4L8.8 10.8L11.8 7.8"
+                stroke="#0068D6"
+                stroke-width="1.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+            <div class="feature-label">Warranty &amp; Service</div>
+          </div>
+        </section>
 
-      {{NOTES_SECTION}}
-
-      <footer class="footer">
-        <div class="footer-address">{{COMPANY_ADDRESS}}</div>
-        <div class="footer-support">{{SUPPORT_LINE}}</div>
-      </footer>
-    </div>
-  </main>
-</body>
+        <footer class="footer">
+          <div class="social-row">
+            <a class="social-link" href="{{FACEBOOK_URL}}" aria-label="Facebook"
+              >f</a
+            >
+            <a
+              class="social-link"
+              href="{{INSTAGRAM_URL}}"
+              aria-label="Instagram"
+              >IG</a
+            >
+            <a class="social-link" href="{{TWITTER_URL}}" aria-label="Twitter"
+              >T</a
+            >
+            <a class="social-link" href="{{LINKEDIN_URL}}" aria-label="LinkedIn"
+              >in</a
+            >
+          </div>
+          <p class="footer-text">{{COMPANY_ADDRESS}}</p>
+          <p class="footer-text">Phone: {{SUPPORT_PHONE}}</p>
+          <p class="footer-text">Email: {{SUPPORT_EMAIL}}</p>
+        </footer>
+      </div>
+    </main>
+  </body>
 </html>

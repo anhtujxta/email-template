@@ -77,14 +77,21 @@ Sau khi deploy, thay `http://127.0.0.1:8787` bằng domain Worker của bạn.
 
 ## Payload động
 
-Payload hỗ trợ các nhóm dữ liệu:
+Payload backend cần gửi chỉ gồm `quote` và `product`.
 
-- `customer`: tên, email, phone
-- `quote`: mã quote, ngày tạo, CTA, delivery, ghi chú giao hàng
-- `product`: ảnh preview, title, subtitle, request changes
-- `options`: danh sách badge add-on
-- `specifications`: danh sách thông số label/value
-- `brand`: logo, preview text, footer, social links
+- `quote.design_id`: mã design/quote hiển thị trong phần specifications
+- `quote.createdAt`: ngày tạo quote
+- `quote.deliveryRange`: khoảng thời gian giao dự kiến
+- `quote.additionalInstructions`: ghi chú giao hàng, có thể bỏ trống
+- `product.previewImageUrl`: ảnh preview public/signed URL hoặc `data:image/...`
+- `product.previewImageAlt`: alt text cho ảnh preview
+- `product.title`: tên sản phẩm
+- `product.subtitle`: mô tả ngắn về size/shape/type
+- `product.changeRequest`: nội dung request changes, có thể bỏ trống
+- `product.options`: danh sách badge add-on
+- `product.specifications`: danh sách thông số `{ "label": "...", "value": "..." }`
+
+CTA, hero text, footer, support info và social links đang được fix cứng trong template/code, không cần truyền từ backend.
 
 ## Endpoint
 

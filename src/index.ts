@@ -1,5 +1,9 @@
 import puppeteer, { type BrowserWorker } from "@cloudflare/puppeteer";
-import { renderQuoteTemplate, SAMPLE_PAYLOAD, type QuoteTemplatePayload } from "./render.ts";
+import {
+  renderQuoteTemplate,
+  SAMPLE_PAYLOAD,
+  type QuoteTemplatePayload,
+} from "./render.ts";
 
 interface Env {
   BROWSER: BrowserWorker;
@@ -8,7 +12,7 @@ interface Env {
 const corsHeaders = {
   "access-control-allow-origin": "*",
   "access-control-allow-methods": "GET,POST,OPTIONS",
-  "access-control-allow-headers": "content-type"
+  "access-control-allow-headers": "content-type",
 };
 
 export default {
@@ -26,8 +30,8 @@ export default {
           endpoints: {
             html: "POST /html",
             pdf: "POST /pdf",
-            sample: "GET /sample"
-          }
+            sample: "GET /sample",
+          },
         });
       }
 
@@ -45,8 +49,8 @@ export default {
         return new Response(html, {
           headers: {
             ...corsHeaders,
-            "content-type": "text/html; charset=utf-8"
-          }
+            "content-type": "text/html; charset=utf-8",
+          },
         });
       }
 
@@ -59,8 +63,8 @@ export default {
           headers: {
             ...corsHeaders,
             "content-type": "application/pdf",
-            "content-disposition": `inline; filename="quote-summary-${Date.now()}.pdf"`
-          }
+            "content-disposition": `inline; filename="quote-summary-${Date.now()}.pdf"`,
+          },
         });
       }
 
@@ -70,11 +74,15 @@ export default {
         return error;
       }
 
-      return jsonResponse({
-        error: error instanceof Error ? error.message : "Unexpected Worker error"
-      }, 500);
+      return jsonResponse(
+        {
+          error:
+            error instanceof Error ? error.message : "Unexpected Worker error",
+        },
+        500,
+      );
     }
-  }
+  },
 };
 
 async function readPayload(request: Request): Promise<QuoteTemplatePayload> {
@@ -86,15 +94,18 @@ async function readPayload(request: Request): Promise<QuoteTemplatePayload> {
   try {
     return JSON.parse(text) as QuoteTemplatePayload;
   } catch {
-    throw new Response(JSON.stringify({
-      error: "Request body must be valid JSON"
-    }), {
-      status: 400,
-      headers: {
-        ...corsHeaders,
-        "content-type": "application/json; charset=utf-8"
-      }
-    });
+    throw new Response(
+      JSON.stringify({
+        error: "Request body must be valid JSON",
+      }),
+      {
+        status: 400,
+        headers: {
+          ...corsHeaders,
+          "content-type": "application/json; charset=utf-8",
+        },
+      },
+    );
   }
 }
 
@@ -109,7 +120,7 @@ async function renderPdf(html: string, env: Env): Promise<Blob> {
 
     const pdf = await page.pdf({
       printBackground: true,
-      preferCSSPageSize: true
+      preferCSSPageSize: true,
     });
 
     return new Blob([pdf], { type: "application/pdf" });
@@ -123,7 +134,7 @@ function jsonResponse(data: unknown, status = 200): Response {
     status,
     headers: {
       ...corsHeaders,
-      "content-type": "application/json; charset=utf-8"
-    }
+      "content-type": "application/json; charset=utf-8",
+    },
   });
 }
